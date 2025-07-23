@@ -18,7 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // Conexión a MongoDB Atlas
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGO_URI;
 
 mongoose.connect(uri, { useNewUrlParser: true })
   .then(() => console.log('✅ Conectado a MongoDB Atlas'))
