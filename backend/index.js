@@ -1,13 +1,9 @@
-// Cargar variables de entorno
 require('dotenv').config();
-
-// Importar dependencias
 const express = require('express'); 
 const cors = require('cors');
-const mongoose = require('mongoose');
 const axios = require('axios');
+// const mongoose = require('mongoose'); ❌ lo puedes comentar también
 
-// Importar rutas (archivo ruta es 'pelicula.js')
 const peliculasRouter = require('./routes/pelicula');
 
 const app = express();
@@ -17,17 +13,15 @@ const PORT = process.env.PORT || 1000;
 app.use(cors());
 app.use(express.json());
 
-// Conexión a MongoDB Atlas
-const uri = process.env.MONGO_URI;
+// ❌ COMENTADA TEMPORALMENTE LA CONEXIÓN A MONGO
+// const uri = process.env.MONGO_URI;
+// mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+//   .then(() => console.log('✅ Conectado a MongoDB Atlas'))
+//   .catch(err => console.error('❌ Error al conectar a MongoDB:', err.message));
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('✅ Conectado a MongoDB Atlas'))
-  .catch(err => console.error('❌ Error al conectar a MongoDB:', err.message));
-
-// Rutas de películas
+// Rutas
 app.use('/api/peliculas', peliculasRouter);
 
-// Ruta para IA (recomendaciones)
 app.post('/api/recomendaciones', async (req, res) => {
   const { prompt } = req.body;
 
@@ -55,7 +49,6 @@ app.post('/api/recomendaciones', async (req, res) => {
   }
 });
 
-// ✅ Solo una vez
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
 });

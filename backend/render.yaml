@@ -9,6 +9,6 @@ services:
         rootDir: backend
         envVars:
             - key: MONGO_URI
-                value: mongodb+srv://Angela:Octubre@cineversecluster.as0ixm1.mongodb.net/?retryWrites=true&w=majority&appName=cineverseCluster
+                value: mongodb+srv://Angela:Octubre%40cineverse@cineversecluster.as0ixm1.mongodb.net/recomendaciones?retryWrites=true&w=majority&appName=cineverseCluster
             - key: OPENROUTER_API_KEY
                 value: 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
