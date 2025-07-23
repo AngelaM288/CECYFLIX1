@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 
 // ✅ Usamos directamente la URL del backend en Render
-const BACKEND_URL = 'https://recomendaciones-backend.onrender.com';
+const BACKEND_URL = 'https://recomendaciones-frontend-zokg.onrender.com';
 
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
