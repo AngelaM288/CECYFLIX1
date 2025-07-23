@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 1000;
 app.use(cors());
 app.use(express.json());
 
-// ❌ COMENTADA TEMPORALMENTE LA CONEXIÓN A MONGO
+
 const uri = process.env.MONGO_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('✅ Conectado a MongoDB Atlas'))
