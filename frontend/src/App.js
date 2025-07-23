@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+// ✅ Usamos directamente la URL del backend en Render
+const BACKEND_URL = 'https://recomendaciones-backend.onrender.com';
 
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
