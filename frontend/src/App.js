@@ -1,6 +1,7 @@
-//recomendaciones-ia/frontend/src/App.js
 import './App.css';
 import React, { useEffect, useState } from 'react';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
 
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
@@ -10,7 +11,7 @@ const App = () => {
   const [recomendacion, setRecomendacion] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:4000/api/peliculas')
+    fetch(`${BACKEND_URL}/api/peliculas`)
       .then(res => res.json())
       .then(data => {
         setPeliculas(data);
@@ -37,7 +38,7 @@ const App = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:4000/api/recomendaciones', {
+      const res = await fetch(`${BACKEND_URL}/api/recomendaciones`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
