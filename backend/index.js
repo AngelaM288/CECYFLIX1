@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express'); 
 const cors = require('cors');
 const axios = require('axios');
-const mongoose = require('mongoose');// ❌ lo puedes comentar también
+const mongoose = require('mongoose');
 
 const peliculasRouter = require('./routes/pelicula');
 
@@ -13,9 +13,8 @@ const PORT = process.env.PORT || 1000;
 app.use(cors());
 app.use(express.json());
 
-
 const uri = process.env.MONGO_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri)
   .then(() => console.log('✅ Conectado a MongoDB Atlas'))
   .catch(err => console.error('❌ Error al conectar a MongoDB:', err.message));
 
