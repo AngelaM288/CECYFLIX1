@@ -11,7 +11,7 @@ const axios = require('axios');
 const peliculasRouter = require('./routes/pelicula');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 1000;
 
 // Middleware
 app.use(cors());
@@ -20,7 +20,7 @@ app.use(express.json());
 // Conexión a MongoDB Atlas
 const uri = process.env.MONGO_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true })
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('✅ Conectado a MongoDB Atlas'))
   .catch(err => console.error('❌ Error al conectar a MongoDB:', err.message));
 
@@ -55,7 +55,7 @@ app.post('/api/recomendaciones', async (req, res) => {
   }
 });
 
-// Iniciar el servidor
+// ✅ Solo una vez
 app.listen(PORT, () => {
   console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
 });
