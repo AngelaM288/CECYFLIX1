@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
-// ✅ Usamos directamente la URL del backend en Render
-const BACKEND_URL = 'https://recomendaciones-frontend-zokg.onrender.com';
+// ✅ Usamos la variable de entorno
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 const App = () => {
   const [peliculas, setPeliculas] = useState([]);
@@ -69,7 +69,6 @@ const App = () => {
     <div className="App">
       <h1>Catálogo de Películas</h1>
 
-      {/* Formulario */}
       <form
         className="buscador"
         onSubmit={modoDescripcion ? handleBuscarPorDescripcion : handleBuscar}
@@ -94,7 +93,6 @@ const App = () => {
         Buscar por descripción (IA)
       </label>
 
-      {/* Recomendación */}
       {recomendacion && (
         <div className="bloque-recomendaciones">
           <h2>IA sugiere:</h2>
@@ -102,7 +100,6 @@ const App = () => {
         </div>
       )}
 
-      {/* Galería de películas */}
       <div className="grid">
         {peliculasFiltradas.map((p, i) => (
           <div className="tarjeta" key={i}>
