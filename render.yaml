@@ -12,3 +12,12 @@ services:
         value: mongodb+srv://Angela:Octubre@cineversecluster.as0ixm1.mongodb.net/?retryWrites=true&w=majority&appName=cineverseCluster
       - key: OPENROUTER_API_KEY
         value: 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
+
+  - type: web
+    name: recomendaciones-frontend
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: serve -s build
+    rootDir: frontend
